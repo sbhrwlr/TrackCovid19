@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "168699623975",
+    "firebase_url": "https://trackcovid19-7b0d0.firebaseio.com",
+    "project_id": "trackcovid19-7b0d0",
+    "storage_bucket": "trackcovid19-7b0d0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:168699623975:android:aa1696758792c6b76e2c02",
+        "android_client_info": {
+          "package_name": "com.project.trackcovid19"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "168699623975-fa9jffmpgpm7nt66ohhmu1uqf4c3rgu8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.project.trackcovid19",
+            "certificate_hash": "06ccfdaa8d89f07d77dc9522acc654a75289b8a4"
+          }
+        },
+        {
+          "client_id": "168699623975-j9celrum982u58dncng3bb2j1hchjaup.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAU_QQ12A5F_SkqFRbpqf3pyg4sgL5dJis"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "168699623975-j9celrum982u58dncng3bb2j1hchjaup.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

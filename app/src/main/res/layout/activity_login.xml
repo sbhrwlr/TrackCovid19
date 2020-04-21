@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:background="#ffffff">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:id="@+id/phonelayout"
+    android:layout_height="300dp">
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/avatars" />
+        <RelativeLayout
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@drawable/phone"
+            android:layout_marginStart="15dp"
+            android:visibility="visible"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="25dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/phone"
+                android:layout_width="300dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:backgroundTint="@color/colorPrimaryDark"
+                android:drawableStart="@drawable/ic_phone_black_24dp"
+                android:drawablePadding="10dp"
+                android:drawableTint="#fff"
+                android:gravity="center_vertical"
+                android:hint="Phone"
+                android:textColor="#fff"
+                android:textColorHint="#c4c4c4"
+                android:inputType="phone"
+                android:paddingHorizontal="15dp" />
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:layout_alignParentEnd="true"
+                android:layout_height="55dp"
+                android:scaleType="centerCrop"
+                android:id="@+id/sendfab"
+                android:layout_marginRight="10dp"
+                app:lottie_loop="false"
+                android:layout_gravity="right|center_horizontal"
+                app:lottie_rawRes="@raw/done"
+                android:layout_width="55dp"/>
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+<RelativeLayout
+        android:id="@+id/otp_layout"
+        android:layout_width="match_parent"
+        android:visibility="gone"
+
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_height="400dp">
+
+        <LinearLayout
+            android:id="@+id/pin_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingVertical="20dp"
+            android:background="@drawable/phone">
+
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/pinback">
+
+    <EditText
+        android:layout_margin="5dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:inputType="number"
+        android:id="@+id/et_1"
+        android:maxLength="1"
+        android:layout_width="40sp"
+        android:layout_height="44sp"
+        android:background="@drawable/pinback"
+        android:backgroundTint="#fff">
+
+        <requestFocus />
+    </EditText>
+
+</LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/pinback">
+
+                <EditText
+                    android:layout_margin="5dp"
+                    android:id="@+id/et_2"
+                    android:maxLength="1"
+                    android:inputType="number"
+                    android:gravity="center"
+                    android:layout_width="40sp"
+                    android:layout_height="44sp"
+                    android:background="@drawable/pinback"
+                    android:backgroundTint="#fff">
+                </EditText>
+
+            </LinearLayout>
+            <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/pinback">
+
+            <EditText
+                android:layout_margin="5dp"
+                android:id="@+id/et_3"
+                android:inputType="number"
+                android:maxLength="1"
+                android:gravity="center"
+                android:layout_width="40sp"
+                android:layout_height="44sp"
+                android:background="@drawable/pinback"
+                android:backgroundTint="#fff">
+            </EditText>
+
+        </LinearLayout><LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/pinback">
+
+            <EditText
+                android:layout_margin="5dp"
+                android:id="@+id/et_4"
+                android:layout_width="40sp"
+                android:inputType="number"
+                android:gravity="center"
+                android:maxLength="1"
+                android:layout_height="44sp"
+                android:background="@drawable/pinback"
+                android:backgroundTint="#fff">
+            </EditText>
+
+        </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/pinback">
+
+                <EditText
+                    android:layout_margin="5dp"
+                    android:id="@+id/et_5"
+                    android:layout_width="40sp"
+                    android:inputType="number"
+                    android:gravity="center"
+                    android:maxLength="1"
+                    android:layout_height="44sp"
+                    android:background="@drawable/pinback"
+                    android:backgroundTint="#fff">
+                </EditText>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/pinback">
+
+                <EditText
+                    android:layout_margin="5dp"
+                    android:id="@+id/et_6"
+                    android:layout_width="40sp"
+                    android:inputType="number"
+                    android:gravity="center"
+                    android:maxLength="1"
+                    android:layout_height="44sp"
+                    android:background="@drawable/pinback"
+                    android:backgroundTint="#fff">
+                </EditText>
+
+            </LinearLayout>
+        </LinearLayout>
+        <Button
+            android:layout_width="170dp"
+            android:layout_height="42sp"
+            android:background="@drawable/phone"
+            android:textColor="#fff"
+            android:id="@+id/verify"
+            android:layout_below="@id/pin_layout"
+            android:layout_margin="4dp"
+            android:layout_centerHorizontal="true"
+            android:text="Verify"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+
+
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_alignParentBottom="true"
+            android:gravity="center"
+            android:foregroundGravity="bottom"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/earth" />
+
+        <TextView
+            android:id="@+id/skip"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:layout_marginEnd="-8dp"
+            android:layout_marginRight="-8dp"
+            android:text="skip"
+            android:layout_alignParentBottom="true"
+            android:paddingBottom="10dp"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/colorPrimaryDark" />
+    </RelativeLayout>
+
+
+
+</LinearLayout>

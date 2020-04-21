@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+<com.google.android.material.appbar.AppBarLayout
+    android:layout_width="match_parent"
+    android:id="@+id/appbar"
+    android:layout_height="wrap_content">
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/toolbar"
+        android:background="#fff"
+        android:elevation="5dp">
+
+        <TextView
+            android:background="@drawable/phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_place_black_24dp"
+            android:drawableStart="@drawable/ic_place_black_24dp"
+            android:drawableTint="#fff"
+            android:textColor="#fff"
+            android:padding="5dp"
+            android:paddingHorizontal="10dp"
+            android:text="Your Location"
+            android:id="@+id/location"/>
+
+    </androidx.appcompat.widget.Toolbar>
+</com.google.android.material.appbar.AppBarLayout>
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/appbar"
+    android:id="@+id/overview">
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:lottie_rawRes="@raw/load"
+        android:id="@+id/load"
+        android:layout_centerInParent="true"
+        app:lottie_loop="true"
+        app:lottie_autoPlay="true"/>
+    <LinearLayout
+
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:padding="5dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:id="@+id/total_Cases"
+                android:text=""
+                android:textColor="#d93300"
+                android:layout_weight="1"
+                android:textSize="20sp"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text=""
+                android:textColor="#0e69b3"
+                android:layout_weight="1"
+                android:id="@+id/active_cases"
+                android:gravity="center"
+                android:textSize="20sp"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text=""
+                android:gravity="center"
+                android:layout_weight="1"
+                android:id="@+id/recovered_cases"
+                android:textColor="#0da805"
+                android:textSize="20sp"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text=""
+                android:gravity="center"
+                android:textColor="#2e3a52"
+                android:layout_weight="1"
+                android:id="@+id/deceased_cases"
+                android:textSize="20sp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:paddingHorizontal="5dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Total Cases"
+                android:textColor="#d93300"
+                android:layout_weight="1"
+                android:textSize="12sp"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="Active Cases"
+                android:textColor="#0e69b3"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="12sp"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="Recovered Cases"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:textColor="#0da805"
+                android:textSize="12sp"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="Deceased Cases"
+                android:gravity="center"
+                android:textColor="#2e3a52"
+                android:layout_weight="1"
+                android:textSize="12sp"/>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/overview"
+        android:id="@+id/statewiselayout"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Statewise Cases"
+            android:textColor="#383d3a"
+            android:textSize="30sp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="5dp"/>
+
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginHorizontal="5dp"
+    android:layout_gravity="center"
+    android:layout_marginVertical="10dp">
+    <RelativeLayout
+        android:padding="7dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            app:lottie_rawRes="@raw/loadlist"
+            android:id="@+id/loadlist"
+            android:layout_centerInParent="true"
+            app:lottie_loop="true"
+            app:lottie_autoPlay="true"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/recycler_view"/>
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+
+</RelativeLayout>
