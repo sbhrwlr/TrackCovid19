@@ -20,7 +20,7 @@ public class SplashActivity extends AppCompatActivity {
                     sleep(2000);
 
                     // Call the main menu
-                    Intent i = new Intent(SplashActivity.this, LoginActivity.class);
+                    Intent i = new Intent(SplashActivity.this, MainActivity.class);
                     startActivity(i);
 
                     //destroying Splash activity

@@ -4,6 +4,8 @@ import android.Manifest;
 import android.content.Context;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.style.RelativeSizeSpan;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,7 +31,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_LOCATION = 1;
-    private TextView tcases, acases, rcases, dcases, yourloc;
+    private TextView tcases, acases, rcases, dcases, yourloc, dttotal, dtrecover, dtdecease;
     private RequestQueue mRequestQueue, nRequestQueue;
     private LottieAnimationView load, loadlist;
     private RecyclerView recyclerView;
@@ -43,11 +45,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         ActivityCompat.requestPermissions(this,
                 new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_LOCATION);
-
-        tcases = findViewById(R.id.total_Cases);
+        dttotal = findViewById(R.id.deltatotal);
+        dtrecover = findViewById(R.id.deltarecover);
+        dtdecease = findViewById(R.id.deltadeceased);
+        tcases = findViewById(R.id.total_cases);
         acases = findViewById(R.id.active_cases);
         rcases = findViewById(R.id.recovered_cases);
         dcases = findViewById(R.id.deceased_cases);
@@ -65,8 +68,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         mRequestQueue = Volley.newRequestQueue(this);
-        nRequestQueue = Volley.newRequestQueue(this);
-        parseJSON();
+
         stateJSON();
 
     }
@@ -74,27 +76,46 @@ public class MainActivity extends AppCompatActivity {
     private void stateJSON() {
 
         loadlist.setVisibility(View.VISIBLE);
-        String url = "https://api.rootnet.in/covid19-in/unofficial/covid19india.org/statewise";
+        String url = "https://api.covid19india.org/data.json";
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            JSONObject data = response.getJSONObject("data");
-                            JSONArray jsonArray = data.getJSONArray("statewise");
-
-                            for (int i = 0; i < jsonArray.length(); i++) {
-
+                            JSONArray jsonArray = response.getJSONArray("statewise");
+                            JSONObject total = jsonArray.getJSONObject(0);
+                            String deltatotal = "(+" + total.getString("deltaconfirmed") + ")";
+                            String deltarecovered = "(+" + total.getString("deltarecovered") + ")";
+                            String deltadeaths = "(+" + total.getString("deltadeaths") + ")";
+                            String statename = total.getString("state");
+                            String confirmed = total.getString("confirmed");
+                            String recovered = total.getString("recovered");
+                            String active = total.getString("active");
+                            String deaths = total.getString("deaths");
+                            tcases.setText(confirmed);
+                            dttotal.setText(deltatotal);
+                            dtrecover.setText(deltarecovered);
+                            dtdecease.setText(deltadeaths);
+                            acases.setText(active);
+                            dcases.setText(deaths);
+                            rcases.setText(recovered);
+                            load.setVisibility(View.GONE);
+                            for (int i = 1; i < jsonArray.length(); i++) {
                                 JSONObject statewise = jsonArray.getJSONObject(i);
-                                String statename = statewise.getString("state");
-                                String confirmed = statewise.getString("confirmed");
-                                String recovered = statewise.getString("deaths");
-                                String active = statewise.getString("active");
-                                String deaths = statewise.getString("deaths");
+                                String sname = statewise.getString("state");
+                                String deltaconfirm = "(+"+statewise.getString("deltaconfirmed")+")";
+                                String deltarecover = "(+"+statewise.getString("deltarecovered")+")";
+                                String deltadeceased = "(+"+statewise.getString("deltadeaths")+")";
+                                if(deltaconfirm=="(+0)"){ deltaconfirm = null; }
+                                if(deltarecover=="(+0)"){ deltarecover = null; }
+                                if(deltadeceased=="(+0)"){ deltadeceased = null; }
+                                String confirm= statewise.getString("confirmed")+"\n"+deltaconfirm;
+                                String recover =statewise.getString("recovered") +"\n"+deltarecover;
+                                String activ = statewise.getString("active");
+                                String death = statewise.getString("deaths")+"\n"+deltadeceased;
 
-                                stateList.add(new stateModel(statename, confirmed, active, recovered, deaths));
-
+                                    stateList.add(new stateModel(sname, confirm, activ, recover, death));
                                 loadlist.setVisibility(View.GONE);
                             }
 
@@ -110,50 +131,8 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
-        nRequestQueue.add(request);
-    }
-
-    private void parseJSON() {
-        load.setVisibility(View.VISIBLE);
-        String url = "https://api.rootnet.in/covid19-in/unofficial/covid19india.org/statewise";
-
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        String jsonResponse;
-                        try {
-                            // Parsing json object response
-                            // response will be a json object
-                            JSONObject data = response.getJSONObject("data");
-                            JSONObject total = data.getJSONObject("total");
-                            String confirmed = total.getString("confirmed");
-                            String active = total.getString("active");
-                            String deaths = total.getString("deaths");
-                            String recovered = total.getString("recovered");
-
-                            tcases.setText(confirmed);
-                            acases.setText(active);
-                            dcases.setText(deaths);
-                            rcases.setText(recovered);
-                            load.setVisibility(View.GONE);
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            Toast.makeText(getApplicationContext(),
-                                    "Error: " + e.getMessage(),
-                                    Toast.LENGTH_LONG).show();
-                        }
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                error.printStackTrace();
-            }
-        });
-
-        MyApplication.getInstance().addToRequestQueue(request);
+        mRequestQueue  = Volley.newRequestQueue(this);
+        mRequestQueue.add(request);
     }
 
 }
