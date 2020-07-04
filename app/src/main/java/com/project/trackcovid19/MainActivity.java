@@ -110,10 +110,10 @@ public class MainActivity extends AppCompatActivity {
                                 if(deltaconfirm=="(+0)"){ deltaconfirm = null; }
                                 if(deltarecover=="(+0)"){ deltarecover = null; }
                                 if(deltadeceased=="(+0)"){ deltadeceased = null; }
-                                String confirm= statewise.getString("confirmed")+"\n"+deltaconfirm;
-                                String recover =statewise.getString("recovered") +"\n"+deltarecover;
+                                String confirm=deltaconfirm+" "+ statewise.getString("confirmed");
+                                String recover =deltarecover+" "+statewise.getString("recovered");
                                 String activ = statewise.getString("active");
-                                String death = statewise.getString("deaths")+"\n"+deltadeceased;
+                                String death = deltadeceased+" "+statewise.getString("deaths");
 
                                     stateList.add(new stateModel(sname, confirm, activ, recover, death));
                                 loadlist.setVisibility(View.GONE);

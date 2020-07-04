@@ -68,14 +68,14 @@
                     android:textColor="#d93300"
                     android:layout_weight="2"
                     android:id="@+id/total_cases"
-                    android:gravity="center"
+                    android:gravity="center_horizontal|bottom"
                     android:textSize="18sp"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="12sp"
                     android:id="@+id/deltatotal"
-                    android:gravity="center"
+                    android:gravity="center_horizontal|top"
                     android:textColor="#d93300"
                     android:layout_weight="1"/>
             </LinearLayout>
@@ -86,13 +86,21 @@
                 android:layout_weight="1">
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:text=""
                     android:textColor="#0e69b3"
                     android:layout_weight="2"
                     android:id="@+id/active_cases"
-                    android:gravity="center"
+                    android:gravity="center_horizontal|bottom"
                     android:textSize="18sp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:id="@+id/deltaactiv"
+                    android:gravity="center_horizontal|top"
+                    android:textColor="#0e69b3"
+                    android:layout_weight="1"/>
             </LinearLayout>
             <LinearLayout
                 android:orientation="vertical"
@@ -106,17 +114,18 @@
                     android:textColor="#0da805"
                     android:layout_weight="2"
                     android:id="@+id/recovered_cases"
-                    android:gravity="center"
+                    android:gravity="center_horizontal|bottom"
                     android:textSize="18sp"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="12sp"
-                    android:gravity="center"
+                    android:gravity="center_horizontal|top"
                     android:id="@+id/deltarecover"
                     android:textColor="#0da805"
                     android:layout_weight="1"/>
             </LinearLayout>
+
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_height="match_parent"
@@ -129,13 +138,13 @@
                     android:textColor="#2e3a52"
                     android:layout_weight="2"
                     android:id="@+id/deceased_cases"
-                    android:gravity="center"
+                    android:gravity="center_horizontal|bottom"
                     android:textSize="18sp"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="12sp"
-                    android:gravity="center"
+                    android:gravity="center_horizontal|top"
                     android:id="@+id/deltadeceased"
                     android:textColor="#2e3a52"
                     android:layout_weight="1"/>
@@ -180,6 +189,23 @@
                 android:textColor="#2e3a52"
                 android:layout_weight="1"
                 android:textSize="12sp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="5dp"
+            android:layout_marginHorizontal="5dp">
+            <Button
+                android:layout_width="wrap_content"
+                android:paddingHorizontal="50dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/phone"
+                android:text="Visualize"
+                android:layout_gravity="center_horizontal"
+                android:textColor="#fff"
+                android:drawableEnd="@drawable/graph"
+                android:drawablePadding="10dp"/>
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>
