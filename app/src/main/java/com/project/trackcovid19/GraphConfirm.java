@@ -124,10 +124,9 @@ public class GraphConfirm extends AppCompatActivity {
                 .yLabel(true)
                 .yStroke((Stroke) null, null, null, (String) null, (String) null);
         cartesian.tooltip().positionMode(TooltipPositionMode.POINT);
-        cartesian.title("Deceased Per Day from last one month");
-        cartesian.yAxis(0).title("Number of Food Sold");
+        cartesian.title("Confirmed Per Day from last one month");
+        cartesian.yAxis(0).title("Patients Confirmed");
         cartesian.xAxis(0).labels().padding(5d, 5d, 5d, 5d);
-        Toast.makeText(this, "Viz three", Toast.LENGTH_SHORT).show();
         Set set = Set.instantiate();
         set.data(c);
         Mapping secondgraph = set.mapAs("{ date: 'date', dailydeceased: 'dailydeceased' }");
@@ -158,19 +157,5 @@ public class GraphConfirm extends AppCompatActivity {
             setValue("dailyconfirm", dailyconfirm);
         }
     }
-    private class DataStructure2 extends ValueDataEntry{
 
-        DataStructure2(String date, int dailyrecover) {
-            super(date,dailyrecover);
-            setValue("dailyrecover", dailyrecover);
-        }
-    }
-    private class DataStructure3 extends ValueDataEntry{
-
-        DataStructure3(String date, int dailydeceased) {
-            super(date,dailydeceased);
-            setValue("dailydeceased", dailydeceased);
-
-        }
-    }
 }

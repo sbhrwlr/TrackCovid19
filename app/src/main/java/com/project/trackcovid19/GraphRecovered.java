@@ -85,10 +85,9 @@ public class GraphRecovered extends AppCompatActivity {
                 .yLabel(true)
                 .yStroke((Stroke) null, null, null, (String) null, (String) null);
         cartesian.tooltip().positionMode(TooltipPositionMode.POINT);
-        cartesian.title("Deceased Per Day from last one month");
-        cartesian.yAxis(0).title("Number of Food Sold");
+        cartesian.title("Recovered Per Day from last one month");
+        cartesian.yAxis(0).title("Patients Recovered");
         cartesian.xAxis(0).labels().padding(5d, 5d, 5d, 5d);
-        Toast.makeText(this, "Viz three", Toast.LENGTH_SHORT).show();
         Set set = Set.instantiate();
         set.data(c);
         Mapping secondgraph = set.mapAs("{ date: 'date', dailyconfirm: 'dailyconfirm' }");
