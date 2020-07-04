@@ -2,11 +2,13 @@ package com.project.trackcovid19;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.style.RelativeSizeSpan;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<stateModel> stateList;
     TextView tvAddress;
     LocationManager locationManager;
+    private Button vizbtn;
+    Button btn1, btn2 , btn3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +61,11 @@ public class MainActivity extends AppCompatActivity {
         load = findViewById(R.id.load);
         tvAddress = findViewById(R.id.location);
 
+        btn1 = findViewById(R.id.confirm);
+        btn2 = findViewById(R.id.recover);
+        btn3 = findViewById(R.id.decease);
+
+
 
         loadlist = findViewById(R.id.loadlist);
         recyclerView = findViewById(R.id.recycler_view);
@@ -64,12 +73,36 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
+
         stateList = new ArrayList<>();
 
 
         mRequestQueue = Volley.newRequestQueue(this);
 
         stateJSON();
+
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, GraphConfirm.class);
+                startActivity(intent);
+            }
+        });
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, GraphRecovered.class);
+                startActivity(intent);
+            }
+        });
+
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, GraphDeceased.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
